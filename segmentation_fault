@@ -1,0 +1,35 @@
+A segmentation fault (often abbreviated as segfault) occurs when a C program tries to access memory that it’s not allowed to. Here's a minimal C program that intentionally causes a segmentation fault:
+
+🔥 Example 1: Dereferencing a NULL pointer
+c
+Copy
+Edit
+#include <stdio.h>
+
+int main() {
+    int *ptr = NULL;
+    *ptr = 42;  // Segmentation fault here
+    return 0;
+}
+🔥 Example 2: Accessing out-of-bounds array index
+c
+Copy
+Edit
+#include <stdio.h>
+
+int main() {
+    int arr[5];
+    arr[100] = 10;  // Writing far outside array bounds
+    return 0;
+}
+🔥 Example 3: Writing to read-only string literal
+c
+Copy
+Edit
+#include <stdio.h>
+
+int main() {
+    char *str = "Hello";
+    str[0] = 'h';  // Modifying a string literal (read-only)
+    return 0;
+}
