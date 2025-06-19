@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+
+void vulnerable_function() {
+    char buffer[100];  // Allocate space for up to 99 characters + 1 null terminator
+    printf("Enter a string: ");
+    
+    // Read input safely into buffer
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+        // Remove newline character if present
+        buffer[strcspn(buffer, "\n")] = '\0';
+        printf("You entered: %s\n", buffer);
+    } else {
+        printf("Error reading input.\n");
+    }
+}
+
+int main() {
+    vulnerable_function();  // Call the function to get and print user input
+    return 0;
+}
