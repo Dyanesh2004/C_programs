@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+// Function prototype for the callback
+void callbackFunction(int value);
+
+// Function that uses the callback
+void functionUsingCallback(void (*callback)(int), int value) {
+    printf("Function is processing the value: %d\n", value);
+    // Call the callback function
+    callback(value);
+}
+
+int main() {
+    int number = 10;
+    // Pass the callback function to functionUsingCallback
+    functionUsingCallback(callbackFunction, number);
+    return 0;
+}
+
+// Definition of the callback function
+void callbackFunction(int value) {
+    printf("Callback function is called with value: %d\n", value);
+}
